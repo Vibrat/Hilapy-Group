@@ -1,0 +1,40 @@
+<div class="app-container">
+    <div ngClass="{{ cf.Config.swiperName }} swiper-post" >
+        <div class="swiper-wrapper">
+           <app-swiper-slider
+                   *ngFor="let post of data"
+                   #watching ngClass="swiper-slide"
+                   [post]="post"></app-swiper-slider>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- If we need navigation buttons -->
+        <div class="swiper-custom-prev"><a href="#">Back</a></div>
+        <div class="swiper-custom-next"><a href="#">Next</a></div>
+    </div>
+    <!-- Featured posts -->
+    <div class="featured-posts rounded">
+        <div class="row">
+             <div *ngFor="let feature of (features | async)" class="feature-post col-sm-3">
+                 <span class="title"><span>{{ feature.title }}</span></span>
+                 <a routerLink="{{ feature.seo[0] }}">
+                     <div class="image-container rounded">
+                         <img class="img-fluid" src="{{ feature.image.url }}" alt="{{ feature.image.alt }}" />
+                         <div class="screen"></div>
+                    </div>
+                 </a>
+             </div>
+        </div>
+    </div>
+    <!-- end featured posts -->
+</div>
+
+<!-- Interaction with Child Component and export ElementRef as template -->
+<app-swiper-slider
+        *ngFor="let pony of lazyData"
+        [hidden]="true"
+        #watching ngClass="swiper-slide"
+        [post]="pony"
+        [lazyData]="true"
+        (eleRef)="setTemplate($event)"
+></app-swiper-slider>

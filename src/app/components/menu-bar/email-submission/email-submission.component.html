@@ -1,0 +1,15 @@
+<form [formGroup]="form" class="needs-validation">
+    <div class="input-group">
+        <input formControlName="email" type="email" class="form-control" placeholder="{{ la.Input.email }}">
+        <div class="input-group-append">
+            <button [disabled]="form.invalid"
+                    (click)="onSubmit()"
+                    [style.background-color]="(success) ? 'green' : ''"
+                    [innerHTML]="(success) ? 'success' : la.Button.submit"
+                    class="btn btn-secondary">
+            </button>
+        </div>
+        <div class="valid-feedback">{{ la.Validator.success.email }}</div>
+        <div class="invalid-feedback">{{ la.Validator.error.email }}</div>
+    </div>
+</form>

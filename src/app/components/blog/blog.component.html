@@ -1,0 +1,41 @@
+<div ngClass="container-all">
+  <div ngClass="square {{ cf.swiperName }}">
+    <!-- swiper wrapper -->
+    <div ngClass="swiper-wrapper">
+      <!-- Swiper Container -->
+      <div #watching *ngFor="let item of data" ngClass="swiper-slide boxs-effect">
+        <div ngClass="image-container">
+            <a [routerLink]="'/post/' + item.seo[0]">
+              <img ngClass="img-fluid" src="{{ item.image.url }}" alt="{{ item.image.alt }}" />
+                <div ngClass="screen"></div>
+            </a>
+        </div>
+        <div ngClass="section-text align-bottom">
+          <div ngClass="row">
+            <div ngClass="col-sm-12 col-xs-6">
+              <div ngClass="title">
+                  <a [routerLink]="'/post/' + item.seo[0]">
+                    <span>{{ item.title }}</span>
+                  </a>
+              </div>
+            </div>
+            <div ngClass="col-sm-12 col-xs-6 classes">
+              <div ngClass="additional">
+                <div ngClass="sub-categories">
+                  <div ngClass="category">{{ item.category }}</div>
+                  <div>{{ item.date | date: ' dd - MM - yyyy' }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End swiper container-->
+    </div>
+    <!-- end swiper wrapper -->
+  </div>
+
+  <!-- add a class -disappear when finish loading image -->
+  <div ngClass="-loading"> <div ngClass="bounceball"></div></div>
+</div>
+

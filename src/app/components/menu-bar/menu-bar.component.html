@@ -1,0 +1,56 @@
+<!-- Menu bar for md size screen -->
+<nav class="menu-bar menu-bar-fixed-left d-none d-md-block d-lg-block">
+    <div class="app-menu-bar--logo">
+        <a [href]="''"><img class="img-fluid" src="{{ la.Logo.url }}" alt="{{ la.Logo.atl }}"/></a>
+        <br />
+        <!-- {{ logo.name }} -->
+    </div>
+<ul class="menu-bar--vertical">
+  <li *ngFor="let item of data; let last = last;">
+    <a [class.last-menu]="true" routerLink="{{ item.url }}">{{ item.name }}</a>
+  </li>
+</ul>
+</nav>
+
+<!-- menu bar for mobile <= 768 px -->
+<nav class="menu-bar menu-bar-fixed-top d-md-none d-lg-none" >
+    <div class="app-menu-bar--logo">
+        <img class="img-fluid" src="{{ la.Logo.url }}" alt="{{ la.Logo.atl }}" />
+        <br />
+        <span class="d-none d-md-block d-lg-none">{{ la.Logo.name }}</span>
+    </div>
+    <ul class="menu-bar-toggle--horizontal">
+        <li>
+            <button (click)="toggle($event)"
+                    class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#menu-bar--toggle"
+                    aria-controls="menu-bar--toggle"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+            </button>
+        </li>
+    </ul>
+    <ul  id="menu-bar--toggle" class="menu-bar--horizontal collapse">
+        <li *ngFor="let item of data; let last = last;">
+            <a [class.last]="last" href="{{ item.url }}">{{ item.name }}</a>
+        </li>
+        <li *ngIf="(contact | async) as ct;" class="contact more-space">
+           <div><h4>{{ la.entry.contact }}</h4></div>
+           <div> {{ ct.hotline }} | {{ ct.email }}</div>
+        </li>
+        <li *ngIf="(media | async) as plugin;" class="follow">
+            <div><h4>{{la.entry.follow }}</h4></div>
+            <div class="social-media">
+                <a href="https://facebook.com/{{ plugin.facebook.url}}"><span class="fa fa-facebook-official"></span></a>
+                <a href="https://instagram.com/{{ plugin.instagram.url }}"><span class="fa fa-instagram"></span></a>
+            </div>
+        </li>
+        <li class="form">
+           <email-submission></email-submission>
+        </li>
+    </ul>
+</nav>
+

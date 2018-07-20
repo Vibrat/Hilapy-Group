@@ -1,0 +1,13 @@
+<div class="square porfolio">
+      <div class="header header-portfolio">Porfolio</div>
+      <div class="square {{ cf.swiper.name }}">
+        <div class="swiper-wrapper custom">
+          <div #watching *ngFor="let item of data" class="swiper-slide box-effect rounded">
+            <div class="image-container">
+              <a [href]="item.url"><img class="img-fluid" src="{{ item.image}}" alt="{{ item.name }}" /></a>
+              <div class="screen"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

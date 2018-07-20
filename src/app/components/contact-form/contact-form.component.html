@@ -1,0 +1,33 @@
+<ul class="contact-section">
+  <li>
+    <div>
+      <a *ngIf="media" href="https://facebook.com/{{ media.facebook.url}}"><span class="fa fa-facebook-official"></span></a>&nbsp;
+      <a *ngIf="media" href="https://instagram.com/{{ media.instagram.url}}"><span class="fa fa-instagram"></span></a>
+    </div>
+  </li>
+  <li>
+    <form [formGroup]="newsletterForm" class="needs-validation" novalidate="">
+      <div class="input-group">
+        <input formControlName="email" (output)="validation($event)" type="email" class="form-control" placeholder="{{ la.email }}">
+        <div class="input-group-append">
+          <button type="submit"
+                  (click)="onSubmit()"
+                  [disabled]="getControl('email').invalid"
+                  [style.background-color]="(success) ? 'green' : ''"
+                  [innerHTML]="(success) ? 'success' : la.text_subscribe"
+                  ngClass="btn btn-secondary">
+          </button>
+        </div>
+        <div *ngIf="newsletterForm.status == 'VALID'" class="valid-feedback">Correct Email</div>
+        <div *ngIf="newsletterForm.status == 'INVALID'
+                 && newsletterForm.value.email.length > 0" class="invalid-feedback">Invalid Email</div>
+      </div>
+    </form>
+  </li>
+  <li>
+    <div><b>{{ la.text_contact }}</b></div>
+  </li>
+  <li class="direct-contact">
+    <span *ngIf="contact">{{ contact.hotline }} | {{ contact.email }} <br /> {{ contact.address }}</span>
+  </li>
+</ul>

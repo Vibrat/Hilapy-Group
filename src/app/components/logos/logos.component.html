@@ -1,0 +1,12 @@
+<div class="below-supportive {{ cf.SwiperContainer.name }}">
+  <div #watcher class="swiper-wrapper">
+    <div *ngFor="let item of data" class="swiper-slide box-effect">
+      <a href="{{ item.url }}" target="_blank">
+        <div class="image-container">
+        <img class="img-fluid" alt="{{ item.name }}" src="{{ item.image }}">
+        </div>
+        <div class="header-portfolio text-center">{{ item.name }}</div>
+      </a>
+    </div>
+  </div>
+</div>

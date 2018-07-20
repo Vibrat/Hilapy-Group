@@ -1,0 +1,332 @@
+@import '~sass/variables';
+
+.app-container {
+  padding-left: 100px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+// Swiper posst
+.app-container .swiper-post {
+  height: 50%;
+  width: 50%;
+  top: 0;
+  bottom:0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  position: absolute;
+}
+
+
+.swiper-slide {
+  overflow: hidden;
+}
+
+// Content Section
+.section-text {
+  position: relative;
+  color: $dark-bold;
+  padding: 16px;
+  background-color: transparent;
+  .screen {
+    position: absolute;
+    opacity: 1;
+    background-color: rgba($white-smoke, 0.67);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom:0;
+    left: 0;
+    right: 0;
+    -webkit-filter: blur(4px);
+    -moz-filter: blur(4px);
+    -o-filter: blur(4px);
+    -ms-filter: blur(4px);
+    filter: blur(4px);
+  }
+  a, span {
+    opacity: 0.87;
+    color: $dark-bold;
+  }
+  &.align-bottom {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+.title {
+  font-size: 36px;
+  font-family: 'Baloo Paaji', cursive;
+}
+
+// Image Processing
+
+.image-container {
+  width: 100%;
+  height: 100%;
+  background-color: $white-smoke;
+}
+
+.image-container img {
+  min-width: 100%;
+}
+
+
+.screen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.36;
+  top: 0;
+}
+
+.screen:hover {
+  animation: infiniteOpacity 3s infinite;
+}
+
+@keyframes infiniteOpacity {
+  0% { opacity: 0.36; }
+  50% { opacity: 0.78; }
+  100% { opacity: 0.36; }
+}
+
+.swiper-pagination {
+  position: fixed;
+  z-index: 1;
+  right: 15px;
+  left: auto;
+  width: auto;
+  transform-origin: 90% 50%;
+  transform: rotate(90deg);
+}
+
+.swiper-custom-next {
+  position: fixed;
+  right: 15px;
+  top: 0;
+  bottom: 0;
+  height: 50px;
+  margin: auto;
+  z-index: 2;
+}
+
+.swiper-custom-next a {
+  padding: 4px 8px 5px 8px;
+  text-decoration: none;
+  display: inline-block;
+  line-height: 1.3;
+  background-color: $white-smoke;
+  font-weight: bold;
+}
+
+.swiper-custom-next a:after {
+  content: ".";
+}
+
+.swiper-custom-prev {
+  position: fixed;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  height: 50px;
+  margin: auto;
+  z-index: 2;
+}
+
+.swiper-custom-prev.swiper-button-disabled {
+  display: none;
+}
+
+.swiper-custom-prev a {
+  padding: 4px 8px 5px 8px;
+  text-decoration: none;
+  display: inline-block;
+  line-height: 1.3;
+  background-color: $white-smoke;
+  font-weight: bold;
+}
+
+.swiper-custom-prev a:before {
+  content: ".";
+}
+
+
+// Feature posts section
+
+.featured-posts {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 75%;
+  background-color: $white-smoke;
+}
+
+.featured-posts .row {
+  margin-right: 0;
+  margin-left: 0;
+  -webkit-box-shadow: 0 4px 14px rgba(0,0,0,.36);
+  -moz-box-shadow: 0 4px 14px rgba(0,0,0,.36);
+  box-shadow: 0 4px 10px rgba(0,0,0,.36);
+}
+
+.featured-posts .feature-post {
+  text-align: left;
+  height: 75px;
+  overflow: hidden;
+  padding-right: 10px;
+  padding-left: 0;
+  transition: height 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.featured-posts .feature-post:first-child {
+  padding-left: 10px;
+}
+
+.featured-posts:hover .feature-post {
+  height: 120px;
+  transition: height 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.featured-posts .feature-post .image-container {
+  overflow: hidden;
+}
+
+.featured-posts .feature-post .title {
+  font-weight: bold;
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+  color: $link-hover;
+}
+
+.featured-posts .feature-post .title:before {
+  content: ".";
+}
+
+
+@media screen and (max-width: 767px) {
+  .app-container {
+    padding-left: 0;
+    position: relative;
+    margin-top: 80px;
+    width: 100vw;
+    height: calc(100vh - 80px);
+  }
+
+  .app-container .swiper-post {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .full-height {
+    height: 100%;
+    .image-container {
+      height: 100%;
+      img {
+        height: 100%;
+        width: auto;
+      }
+    }
+  }
+
+  .section-text {
+    position: relative;
+    color: $dark-bold;
+    background-color: $white-smoke;
+    padding: 16px;
+    .screen {
+      -webkit-filter: blur(0);
+      -moz-filter: blur(0);
+      -o-filter: blur(0);
+      -ms-filter: blur(0);
+      filter: blur(0);
+    }
+    a, span {
+      opacity: 1;
+      color: $dark-bold;
+    }
+    &.align-bottom {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+
+
+  .swiper-slide.rounded {
+    border-radius: 0!important;
+  }
+
+  .feature-post .image-container {
+    height: 100%;
+    background-color: $white-smoke;
+    border-radius: 0 !important;
+  }
+
+  .swiper-slide .image-container .img-fluid {
+    height: calc(100vh - 155.3px);
+    margin-left: -50%;
+    min-width: 150%;
+  }
+
+  .swiper-custom-prev, .swiper-custom-next {
+    display: none;
+  }
+
+  .section-text.align-bottom {
+    padding-right: 30px;
+    color: $dark-bold;
+  }
+
+  .swiper-pagination {
+    position: absolute;
+  }
+
+  .swiper-slide .title {
+    font-size: 15px;
+    font-family: 'Baloo Paaji', cursive;
+  }
+
+  .hover {
+    opacity: 1;
+  }
+
+  .featured-posts {
+    position: relative;
+    width: 100%;
+    background-color: $white-smoke;
+  }
+
+  .featured-posts .feature-post {
+    padding: 0;
+    height: auto !important;
+    transition: none;
+    border-radius: 0!important;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    -webkit-box-shadow: 0 4px 14px rgba(0,0,0,.65);
+    -moz-box-shadow: 0 4px 14px rgba(0,0,0,.65);
+    box-shadow: 0 4px 10px rgba(0,0,0,.65);
+  }
+
+  .featured-posts .feature-post .title {
+    position: absolute;
+    color: $white-smoke;
+    display: table-cell;
+    vertical-align: middle;
+    opacity: 0.78;
+    bottom: 0;
+    height: auto;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(0,0,0, 0.22);
+  }
+
+  .featured-posts .feature-post:first-child {
+    padding: 0;
+  }
+}

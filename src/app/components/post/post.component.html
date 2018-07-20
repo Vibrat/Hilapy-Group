@@ -1,0 +1,42 @@
+<div class="app-container">
+  <div *ngIf="data" class="row">
+    <div class="col-sm-8 main-post">
+        <h1>{{ data.title }}</h1>
+        <div class="date">{{ data.date | date: 'dd-MM-yyy' }}</div>
+        <div class="image-container">
+            <img class="img-fluid featured-img"  [src]="data.image.url" [alt]="data.image.alt"/>
+            <span class="img-alt">{{ data.image.alt }}</span>
+        </div>
+        <div ngClass="content" [innerHTML]="data.content | safeHtml"></div>
+    </div>
+    <div class="col-sm-4 right-collumn">
+       <div class="holder">
+            <div class="social-section">
+                <a href="/" (click)="sharePost($event, 'fb')" class="btn-social-link fa fa-facebook"></a>
+                <a href="/" (click)="sharePost($event, 'twitter')" class="btn-social-link fa fa-twitter"></a>
+                <a href="/" (click)="sharePost($event, 'linkedin')" class="btn-social-link fa fa-linkedin"></a>
+            </div>
+            <div *ngIf="featured" class="related">
+                <div class="headers">More articles</div>
+                <div class="related-posts row">
+                    <div *ngFor="let post of featured" class="related-post col-sm-6">
+                        <div class="image-container rounded">
+                            <a href="/post/{{ post.seo[0] }}" class="related-link">
+                            <img class="rounded" [src]="post.image.url" [alt]="post.image.alt" />
+                            </a>
+                        </div>
+                        <a href="/post/{{ post.seo[0] }}" class="related-link">{{ post.title }}</a>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="headers" class="outline">
+                <span class="outline-title">Content</span>
+                <a *ngFor="let item of headers"
+                   [href]="item.index"
+                   (click)="scroll(item.index, $event)"
+                   class="outline-item">{{ item.text }}</a>
+            </div>
+       </div>
+    </div>
+  </div>
+</div>
